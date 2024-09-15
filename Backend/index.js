@@ -8,21 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("/api", async (req, res) => {
-  try {
-    const data = await hostelModel.insertMany(
-      req.body.hostels.map((hostel) => ({
-        name: hostel.name,
-        image: hostel.image,
-        location_id: req.body.location_id,
-      }))
-    );
-    res.send(data);
-  } catch (error) {
-    console.log(error);
-  }
-});
-
 mongoose.connect(
   "mongodb+srv://chetan:chauhan@cluster0.xx5g40u.mongodb.net/Hosteller?retryWrites=true&w=majority&appName=Cluster0"
 );
